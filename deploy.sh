@@ -17,13 +17,10 @@ mkdir -p docs
 cp -R dist/* docs
 
 # Rename the generated files to match the expected names
-js_file=$(find ./docs -name "yew-tube-converter-*.js")
-wasm_file=$(find ./docs -name "yew-tube-converter-*_bg.wasm")
-mv "$js_file" docs/yew-tube-converter.js
-mv "$wasm_file" docs/yew-tube-converter_bg.wasm
-
-# Create a .nojekyll file in the docs directory
-touch docs/.nojekyll
+js_file=$(find ./docs -name "yew_tube_converter-*.js")
+wasm_file=$(find ./docs -name "yew_tube_converter-*_bg.wasm")
+mv "$js_file" docs/yew_tube_converter.js
+mv "$wasm_file" docs/yew_tube_converter_bg.wasm
 
 # Commit the changes
 git add .
