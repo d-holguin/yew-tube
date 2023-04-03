@@ -13,6 +13,9 @@ wasm-pack build --target web --release
 mkdir -p docs
 cp -R pkg/* docs
 
+# Copy index.html to the docs directory
+cp index.html docs/
+
 # Commit the changes
 git add .
 git commit -m "Deploy to GitHub Pages"
