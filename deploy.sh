@@ -6,8 +6,8 @@ if [[ $(git symbolic-ref --short HEAD) != "main" ]]; then
   exit 1
 fi
 
-# Build the Yew application using Trunk with the configuration from trunk.toml
-trunk build --config trunk.toml --release
+# Build the Yew application using Trunk
+trunk build --release
 
 # Remove the old docs folder
 rm -rf docs
