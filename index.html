@@ -5,8 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YewTube Converter</title>
-    <link data-trunk rel="copy-dir" href="./assets/">
-    <link data-trunk rel="icon" href="assets/favicon.svg" type="image/x-icon" />
+    <link rel="icon" href="assets/favicon.svg" type="image/x-icon" />
 </head>
 
 <body>
@@ -15,6 +14,10 @@
             application.</strong>
     </noscript>
     <div id="app"></div>
+    <script type="module">
+        import init from './yew_tube_converter_lib.js';
+        init();
+    </script>
 </body>
 
 </html>

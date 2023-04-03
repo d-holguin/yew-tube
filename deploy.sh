@@ -6,19 +6,12 @@ if [[ $(git symbolic-ref --short HEAD) != "main" ]]; then
   exit 1
 fi
 
-# Build the Yew application
-wasm-pack build --target web --release
+# Build the Yew application using Trunk
+trunk build --release
 
-# Copy the contents of the pkg directory to the docs directory
+# Copy the contents of the dist directory to the docs directory
 mkdir -p docs
-cp -R pkg/* docs
-
-# Copy the compiled JavaScript files to the docs directory
-cp -R ./pkg/yew_tube_converter_lib.js docs/
-cp -R ./pkg/yew_tube_converter_lib_bg.wasm docs/
-
-# Copy the index.html file to the docs directory
-cp index.html docs/
+cp -R dist/* docs
 
 # Commit the changes
 git add .
