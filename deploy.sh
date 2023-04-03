@@ -1,16 +1,17 @@
 #!/bin/bash
 
-# Build the Yew application
-wasm-pack build --target web --release
-
-# Check if the gh-pages branch exists
-if ! git show-ref --quiet refs/heads/gh-pages; then
-  # Create the gh-pages branch if it doesn't exist
-  git branch gh-pages
+# Check if current branch is gh-pages
+if [[ $(git symbolic-ref --short HEAD) != "gh-pages" ]]; then
+  # Attempt to create gh-pages branch
+  if ! git show-ref --quiet refs/heads/gh-pages; then
+    git checkout -b gh-pages
+  else
+    git checkout gh-pages
+  fi
 fi
 
-# Checkout gh-pages branch
-git checkout gh-pages
+# Build the Yew application
+wasm-pack build --target web --release
 
 # Copy the contents of the pkg directory to the docs directory
 mkdir -p docs
@@ -21,4 +22,4 @@ git add .
 git commit -m "Deploy to GitHub Pages"
 
 # Switch back to the main branch
-git checkout main
+git checkout -
