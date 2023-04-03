@@ -1,13 +1,4 @@
-use yew::prelude::*;
-
-#[function_component(App)]
-fn app() -> Html {
-    html! {
-        <div>
-            <h1>{ "Hello World" }</h1>
-        </div>
-    }
-}
+use yew_tube_converter_lib::App;
 
 fn main() {
     yew::Renderer::<App>::new().render();

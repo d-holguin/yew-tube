@@ -875,5 +875,7 @@ dependencies = [
 name = "yew-tube-converter"
 version = "0.1.0"
 dependencies = [
+ "wasm-bindgen",
+ "web-sys",
  "yew",
 ]
