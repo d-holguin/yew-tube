@@ -20,7 +20,7 @@ cp -R dist/* docs
 js_file=$(find ./docs -name "yew_tube_converter-*.js")
 wasm_file=$(find ./docs -name "yew_tube_converter-*_bg.wasm")
 mv "$js_file" docs/yew_tube_converter.js
-mv "$wasm_file" docs/yew_tube_converter_bg.wasm
+mv "$wasm_file" docs/yew_tube_converter_bg.wasm.js
 
 # Commit the changes
 git add .
