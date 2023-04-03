@@ -1,9 +1,22 @@
-#!/bin/bash
+#!/bin/sh
 
-# Check if current branch is gh-pages
-if [[ $(git symbolic-ref --short HEAD) != "gh-pages" ]]; then
-  echo "Error: current branch is not gh-pages"
+# Exit immediately if a command exits with a non-zero status.
+set -e
+
+if ! command -v trunk &> /dev/null; then
+  echo "Trunk command not found. Please install it using 'cargo install trunk'."
   exit 1
+fi
+
+# Check if we're on the gh-pages branch.
+if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
+  # If not, create the gh-pages branch if it doesn't exist.
+  if ! git show-ref --verify --quiet refs/heads/gh-pages; then
+    git branch gh-pages
+  fi
+
+  # Checkout the gh-pages branch.
+  git checkout gh-pages
 fi
 
 # Remove old build files
@@ -19,7 +32,7 @@ cp -R dist/* .
 js_file=$(find ./dist -name "yew_tube_converter*.js" -exec basename {} \;)
 wasm_file=$(find ./dist -name "yew_tube_converter*_bg.wasm" -exec basename {} \;)
 
-# Generate a new index.html file with the correct file names
+# Generate the index.html file with the correct file names
 cat << EOF > index.html
 <!DOCTYPE html>
 <html lang="en">
@@ -44,9 +57,10 @@ cat << EOF > index.html
 </html>
 EOF
 
-# Commit the changes
+# Commit and push changes to the gh-pages branch.
 git add .
-git commit -m "Deploy to GitHub Pages"
-
-# Push changes to remote gh-pages branch
+git commit -m "Deploy to gh-pages"
 git push origin gh-pages
+
+# Checkout the previous branch.
+git checkout -
