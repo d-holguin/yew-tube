@@ -17,7 +17,7 @@ git add .
 git commit -m "Deploy to GitHub Pages"
 
 # Deploy to GitHub Pages
-gh-pages-test -d .
+gh-pages -d .
 
 # Switch back to the main branch
 git checkout main
