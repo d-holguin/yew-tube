@@ -7,5 +7,4 @@
     <path d="M294.1 32H201.9l-1 1L73.9 160h92.1l1-1 127-127z" fill="white" />
     <path d="M64 32C28.7 32 0 60.7 0 96v64H6.1l1-1 127-127H64z" fill="white" />
     <path d="M512 192H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V192z" fill="white" />
-    <text x="10" y="505" fill="white" font-size="8px">Disclaimer: This SVG has been edited.</text>
 </svg>

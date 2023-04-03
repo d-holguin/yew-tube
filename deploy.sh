@@ -13,7 +13,11 @@ wasm-pack build --target web --release
 mkdir -p docs
 cp -R pkg/* docs
 
-# Copy index.html to the docs directory
+# Copy the compiled JavaScript files to the docs directory
+cp -R ./target/wasm32-unknown-unknown/release/yew_tube_converter_lib.js docs/
+cp -R ./target/wasm32-unknown-unknown/release/yew_tube_converter_lib_bg.wasm docs/
+
+# Copy the index.html file to the docs directory
 cp index.html docs/
 
 # Commit the changes
