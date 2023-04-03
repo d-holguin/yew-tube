@@ -12,6 +12,9 @@ wasm-bindgen = "0.2"
 web-sys = "0.3"
 
 
+[[bin]]
+path = "src/main.rs"
+name = "yew_tube_converter"
+
 [lib]
-name = "yew_tube_converter_lib" # Add a different name here
 crate-type = ["cdylib", "rlib"]
