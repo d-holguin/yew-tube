@@ -9,6 +9,9 @@ fi
 # Build the Yew application using Trunk
 trunk build --release
 
+# Remove the old docs folder
+rm -rf docs
+
 # Copy the contents of the dist directory to the docs directory
 mkdir -p docs
 cp -R dist/* docs
