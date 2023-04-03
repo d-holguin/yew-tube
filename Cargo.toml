@@ -1,5 +1,5 @@
 [package]
-name = "yew-tube-converter"
+name = "yew_tube_converter"
 version = "0.1.0"
 edition = "2021"
 
@@ -18,3 +18,7 @@ name = "yew_tube_converter"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
+
+
+[profile.release]
+lto = true
