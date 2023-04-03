@@ -1,13 +1,9 @@
 #!/bin/bash
 
-# Check if current branch is gh-pages
-if [[ $(git symbolic-ref --short HEAD) != "gh-pages" ]]; then
-  # Attempt to create gh-pages branch
-  if ! git show-ref --quiet refs/heads/gh-pages; then
-    git checkout -b gh-pages
-  else
-    git checkout gh-pages
-  fi
+# Check if current branch is main
+if [[ $(git symbolic-ref --short HEAD) != "main" ]]; then
+  echo "Error: current branch is not main"
+  exit 1
 fi
 
 # Build the Yew application
@@ -21,5 +17,5 @@ cp -R pkg/* docs
 git add .
 git commit -m "Deploy to GitHub Pages"
 
-# Switch back to the main branch
-git checkout -
+# Push changes to remote main branch
+git push origin main

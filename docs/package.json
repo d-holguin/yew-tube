@@ -1,0 +1,14 @@
+{
+  "name": "yew-tube-converter",
+  "version": "0.1.0",
+  "files": [
+    "yew_tube_converter_lib_bg.wasm",
+    "yew_tube_converter_lib.js",
+    "yew_tube_converter_lib.d.ts"
+  ],
+  "module": "yew_tube_converter_lib.js",
+  "types": "yew_tube_converter_lib.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
