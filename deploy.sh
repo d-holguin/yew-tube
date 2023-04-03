@@ -22,6 +22,9 @@ wasm_file=$(find ./docs -name "yew-tube-converter-*_bg.wasm")
 mv "$js_file" docs/yew-tube-converter.js
 mv "$wasm_file" docs/yew-tube-converter_bg.wasm
 
+# Create a .nojekyll file in the docs directory
+touch docs/.nojekyll
+
 # Commit the changes
 git add .
 git commit -m "Deploy to GitHub Pages"
