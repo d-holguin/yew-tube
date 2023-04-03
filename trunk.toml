@@ -1,6 +1,6 @@
 [build]
 public_url = "/"
 
-[assets]
-source = "assets"
-destination = "."
+[output]
+js = "yew-tube-converter.js"
+wasm = "yew-tube-converter_bg.wasm"
