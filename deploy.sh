@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# Check if the gh-pages branch exists
-if ! git show-ref --quiet --verify refs/heads/gh-pages; then
-  # Create the gh-pages branch if it doesn't exist
-  git checkout --orphan gh-pages
-else
-  # Switch to the gh-pages branch
-  git checkout gh-pages
+# Check if current branch is gh-pages
+if [[ $(git symbolic-ref --short HEAD) != "gh-pages" ]]; then
+  echo "Error: current branch is not gh-pages"
+  exit 1
 fi
 
 # Remove old build files
@@ -47,9 +44,9 @@ cat << EOF > index.html
 </html>
 EOF
 
-# # Commit the changes
-# git add .
-# git commit -m "Deploy to GitHub Pages"
+# Commit the changes
+git add .
+git commit -m "Deploy to GitHub Pages"
 
-# # Push changes to remote gh-pages branch
-# git push origin gh-pages
+# Push changes to remote gh-pages branch
+git push origin gh-pages
