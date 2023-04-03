@@ -57,7 +57,7 @@ cat << EOF > index.html
 </html>
 EOF
 
-# Commit and push changes to the gh-pages branch.
+#Commit and push changes to the gh-pages branch.
 git add .
 git commit -m "Deploy to gh-pages"
 git push origin gh-pages
