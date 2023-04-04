@@ -38,6 +38,9 @@ mkdir -p docs
 # Copy the contents of the dist directory to the docs directory
 cp -Rf dist/* docs
 
+# Create the .htaccess file in the docs directory
+echo "AddType application/javascript .js" > docs/.htaccess
+
 #Commit and push changes to the gh-pages branch.
 git add .
 git commit -m "Deploy to gh-pages"
