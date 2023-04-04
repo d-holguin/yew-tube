@@ -3,7 +3,7 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-echo "This script will delete some important files. Are you sure you want to continue? (y/n)"
+echo "This script will deploy to github pages. Are you sure you want to continue? (y/n)"
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ]; then
