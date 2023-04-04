@@ -11,13 +11,6 @@ yew = { version = "0.20", features = ["csr"] }
 wasm-bindgen = "0.2.84"
 web-sys = "0.3.61"
 
-[[bin]]
-path = "src/main.rs"
-name = "yew_tube_converter_bin"
-
-[lib]
-crate-type = ["cdylib", "rlib"]
-
 
 [profile.release]
 lto = true
