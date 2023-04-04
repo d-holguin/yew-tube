@@ -47,6 +47,3 @@ echo "Removing artifacts..."
 #rm -rf docs
 echo "Artifacts removed"
 echo "Finished deploying to gh-pages"
-else
-    echo "Aborted."
-fi
