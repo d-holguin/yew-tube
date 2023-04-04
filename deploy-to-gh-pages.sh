@@ -3,8 +3,8 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-if ! command -v trunk &> /dev/null; then
-  echo "Trunk command not found. Please install it using 'cargo install trunk'."
+if ! command -v wasm-pack &> /dev/null; then
+  echo "wasm-pack command not found. Please install it using 'cargo install wasm-pack'."
   exit 1
 fi
 
@@ -25,9 +25,8 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
   fi
 fi
 
-
-# Build the Yew application using Trunk
-trunk build --release
+# Build the Yew application using wasm-pack
+wasm-pack build --release
 
 # Remove old build files
 rm -rf docs
@@ -35,13 +34,13 @@ rm -rf docs
 # Create the docs directory if it doesn't exist
 mkdir -p docs
 
-# Copy the contents of the dist directory to the docs directory
-cp -Rf dist/* docs
+# Copy the contents of the pkg directory to the docs directory
+cp -Rf pkg/* docs
 
 # Create the .htaccess file in the docs directory
 echo "AddType application/javascript .js" > docs/.htaccess
 
-#Commit and push changes to the gh-pages branch.
+# Commit and push changes to the gh-pages branch.
 git add .
 git commit -m "Deploy to gh-pages"
 git push origin gh-pages
