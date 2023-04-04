@@ -3,3 +3,10 @@ target = "index.html"
 dist = "docs"
 public_url = "assets"
 filehash = false
+
+[output]
+dir = "docs"
+
+[[asset]]
+dir = "assets"
+url_prefix = "/assets"
