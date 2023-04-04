@@ -1,6 +1,12 @@
 [build]
-public_url = "/"
+target = "index.html"
+dist = "docs"
+public_url = ""
+filehash = false
 
 [output]
-js = "yew-tube-converter.js"
-wasm = "yew-tube-converter_bg.wasm"
+dir = "docs"
+
+[[asset]]
+dir = "/assets"
+url_prefix = "/assets"
