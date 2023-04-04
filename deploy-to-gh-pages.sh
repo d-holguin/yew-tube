@@ -3,7 +3,11 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-if ! command -v wasm-pack &> /dev/null; then
+echo "This script will delete some important files. Are you sure you want to continue? (y/n)"
+read answer
+
+if [ "$answer" != "${answer#[Yy]}" ]; then
+    if ! command -v wasm-pack &> /dev/null; then
   echo "wasm-pack command not found. Please install it using 'cargo install wasm-pack'."
   exit 1
 fi
@@ -41,6 +45,9 @@ git push origin gh-pages
 
 # Remove the docs directory
 echo "Removing artifacts..."
-rm -rf docs
+#rm -rf docs
 echo "Artifacts removed"
 echo "Finished deploying to gh-pages"
+else
+    echo "Aborted."
+fi
