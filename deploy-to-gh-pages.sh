@@ -6,7 +6,7 @@ set -e
 echo "This script will deploy to github pages. Are you sure you want to continue? (y/n)"
 read answer
 
-if [ "$answer" = "${answer#[Yy]}" ]; then # Fix the condition here
+if [ "$answer" = "${answer#[Yy]}" ]; then 
     echo "Aborted."
     exit 0
 fi
@@ -46,4 +46,5 @@ git push origin gh-pages
 echo "Removing artifacts..."
 rm -rf docs
 echo "Artifacts removed"
+
 echo "Finished deploying to gh-pages"
