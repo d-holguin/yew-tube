@@ -29,7 +29,7 @@ rm -rf docs
 
 
 # Build the Yew application using trunk
-trunk build --release --public-url="myapp"
+trunk build --release
 
 # Create the .nojekyll file to disable Jekyll processing
 touch docs/.nojekyll

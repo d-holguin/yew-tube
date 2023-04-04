@@ -2,7 +2,4 @@
 target = "index.html"
 dist = "docs"
 filehash = false
-
-[[asset]]
-dir = "/assets"
-url_prefix = "/assets"
+public_url="/"
