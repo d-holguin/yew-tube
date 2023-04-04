@@ -1,12 +1,12 @@
 [build]
 target = "index.html"
 dist = "docs"
-public_url = "assets"
+public_url = "/" 
 filehash = false
 
 [output]
 dir = "docs"
 
 [[asset]]
-dir = "assets"
+dir = "/assets"
 url_prefix = "/assets"
