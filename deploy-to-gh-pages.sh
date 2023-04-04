@@ -24,10 +24,9 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
   fi
 fi
 
-# Remove the docs directory if it exists.
-if [ -d "docs" ]; then
-  rm -rf docs
-fi
+
+rm -rf docs
+
 
 # Build the Yew application using trunk
 trunk build --release
