@@ -37,8 +37,8 @@ mkdir -p docs
 # Copy the contents of the pkg directory to the docs directory
 cp -Rf pkg/* docs
 
-# Create the .htaccess file in the docs directory
-echo "AddType application/javascript .js" > docs/.htaccess
+# Copy the index.html file to the docs directory
+cp index.html docs/
 
 # Commit and push changes to the gh-pages branch.
 git add .
