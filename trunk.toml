@@ -2,4 +2,4 @@
 target = "index.html"
 dist = "docs"
 public_url = "/"
-filehash = true
+filehash = false
