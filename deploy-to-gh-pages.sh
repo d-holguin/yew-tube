@@ -47,5 +47,7 @@ git commit -m "Deploy to gh-pages"
 git push origin gh-pages
 
 # Remove the docs directory
+echo "Removing artifacts..."
 rm -rf docs
 echo "Artifacts removed"
+echo "Finished deploying to gh-pages"
