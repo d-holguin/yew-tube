@@ -1,6 +1,14 @@
 [build]
 public_url = "/"
+target = "index.html"
 
 [output]
-js = "yew-tube-converter.js"
-wasm = "yew-tube-converter_bg.wasm"
+dir = "dist"
+
+[output.js]
+file = "yew-tube-converter.js"
+dir = "dist"
+
+[output.wasm]
+file = "yew-tube-converter_bg.wasm"
+dir = "dist"
