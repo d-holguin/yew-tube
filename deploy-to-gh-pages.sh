@@ -25,17 +25,8 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
   fi
 fi
 
-# Build the Yew application using wasm-pack
-wasm-pack build --target web --release
-
-# Remove old build files
-rm -rf docs
-
-# Create the docs directory if it doesn't exist
-mkdir -p docs
-
-# Copy the contents of the pkg directory to the docs directory
-cp -Rf pkg/* docs
+# Build the Yew application using trunk
+trunk build --release
 
 # Copy the index.html file to the docs directory
 cp index.html docs/
@@ -50,6 +41,6 @@ git push origin gh-pages
 
 # Remove the docs directory
 echo "Removing artifacts..."
-#rm -rf docs
+rm -rf docs
 echo "Artifacts removed"
 echo "Finished deploying to gh-pages"
