@@ -6,7 +6,7 @@ set -e
 echo "This script will deploy to github pages. Are you sure you want to continue? (y/n)"
 read answer
 
-if [ !"$answer" != "${answer#[Yy]}" ]; then
+if [ "$answer" = "${answer#[Yy]}" ]; then
 # Check if we're on the gh-pages branch.
 if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
   # If not, create the gh-pages branch if it doesn't exist.
