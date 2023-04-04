@@ -34,9 +34,6 @@ rm -rf docs
 # Build the Yew application using trunk
 trunk build --release
 
-# Copy the index.html file to the docs directory
-cp index.html docs/
-
 # Create the .nojekyll file to disable Jekyll processing
 touch docs/.nojekyll
 
