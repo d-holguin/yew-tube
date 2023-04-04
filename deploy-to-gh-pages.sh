@@ -26,7 +26,7 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
 fi
 
 # Build the Yew application using wasm-pack
-wasm-pack build --release
+wasm-pack build --target web --release
 
 # Remove old build files
 rm -rf docs
