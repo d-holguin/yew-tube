@@ -40,6 +40,9 @@ cp -Rf pkg/* docs
 # Copy the index.html file to the docs directory
 cp index.html docs/
 
+# Create the .nojekyll file to disable Jekyll processing
+touch docs/.nojekyll
+
 # Commit and push changes to the gh-pages branch.
 git add .
 git commit -m "Deploy to gh-pages"
