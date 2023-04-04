@@ -6,12 +6,7 @@ set -e
 echo "This script will deploy to github pages. Are you sure you want to continue? (y/n)"
 read answer
 
-if [ "$answer" != "${answer#[Yy]}" ]; then
-    if ! command -v wasm-pack &> /dev/null; then
-  echo "wasm-pack command not found. Please install it using 'cargo install wasm-pack'."
-  exit 1
-fi
-
+if [ !"$answer" != "${answer#[Yy]}" ]; then
 # Check if we're on the gh-pages branch.
 if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
   # If not, create the gh-pages branch if it doesn't exist.
@@ -27,6 +22,11 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
     echo "Failed to checkout gh-pages branch"
     exit 1
   fi
+fi
+
+# Remove the docs directory if it exists.
+if [ -d "docs" ]; then
+  rm -rf docs
 fi
 
 # Build the Yew application using trunk
