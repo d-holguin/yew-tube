@@ -14,4 +14,4 @@ url_prefix = "/assets"
 public_url = "/"
 
 [release]
-public_url = ""
+public_url = "/"
