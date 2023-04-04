@@ -1,7 +1,6 @@
 [build]
 target = "index.html"
 dist = "docs"
-public_url = "/"
 filehash = false
 
 [output]
@@ -10,3 +9,9 @@ dir = "docs"
 [[asset]]
 dir = "/assets"
 url_prefix = "/assets"
+
+[dev]
+public_url = "/"
+
+[release]
+public_url = ""
