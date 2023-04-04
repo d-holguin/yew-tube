@@ -43,5 +43,6 @@ git add .
 git commit -m "Deploy to gh-pages"
 git push origin gh-pages
 
-# Checkout the previous branch.
-git checkout -
+# Remove the docs directory
+rm -rf docs
+echo "Artifacts removed"
