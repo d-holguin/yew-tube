@@ -17,9 +17,6 @@ else
     echo "You are on the gh-pages branch. Proceeding with the deployment..."
 fi
 
-# Rest of the script
-
-
 # Set the TRUNK_CONFIG environment variable to use the gh-pages configuration
 export TRUNK_CONFIG=trunk-gh-pages.toml
 
@@ -27,11 +24,11 @@ export TRUNK_CONFIG=trunk-gh-pages.toml
 trunk build --release
 
 # Commit and push changes to the gh-pages branch.
+echo "Committing and pushing changes to gh-pages branch..."
 git add .
 git commit -m "Deploy to gh-pages"
 git push origin gh-pages
-echo "Removing docs folder"
+echo "Removing docs folder..."
 rm -r docs
-echo "Finsihed removing docs folder"
 
 echo "Finished deploying to gh-pages"
