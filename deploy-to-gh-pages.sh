@@ -24,28 +24,11 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
   fi
 fi
 
-# Backup the current directory, excluding the target directory
-echo "Backing up current directory..."
-backup_dir=".backup_$(date +%Y%m%d%H%M%S)"
-mkdir $backup_dir
-find . -maxdepth 1 -mindepth 1 -type f -exec cp -t $backup_dir {} \;
-find . -maxdepth 1 -mindepth 1 -type d -not -name 'target' -not -name $backup_dir -not -name '.git' -exec cp -a {} $backup_dir/ \;
-echo "Backup created at $backup_dir"
+# Set the TRUNK_CONFIG environment variable to use the release configuration
+export TRUNK_CONFIG=trunk-release.toml
 
-# Remove all root files except .git folder
-echo "Cleaning root directory..."
-find . -maxdepth 1 -mindepth 1 -type f -exec rm -f {} \;
-find . -maxdepth 1 -mindepth 1 -type d -not -name '.git' -not -name $backup_dir -exec rm -rf {} \;
-echo "Root directory cleaned"
-
-# Build the Yew application using trunk
+# Build the Yew application using trunk with the release configuration
 trunk build --release
-
-# Move the contents of the dist folder to the root
-cp -r dist/* .
-
-# Create the .nojekyll file to disable Jekyll processing
-touch .nojekyll
 
 # Commit and push changes to the gh-pages branch.
 git add .

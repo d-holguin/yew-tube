@@ -1,5 +1,5 @@
 [build]
 target = "index.html"
-dist = "dist"
+dist = "docs"
 filehash = false
-public_url="/"
+public_url="./"
