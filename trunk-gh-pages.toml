@@ -1,3 +1,6 @@
+#This toml is for publishing to gh-pages.
+#this is needed because of trunk build flattens the outputs and the index.html needs to link the assets in the same folder.
+#this is a workaround for that.
 [build]
 target = "index.html"
 dist = "docs"
