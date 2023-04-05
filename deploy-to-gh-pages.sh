@@ -42,7 +42,7 @@ echo "Root directory cleaned"
 trunk build --release
 
 # Move the contents of the dist folder to the root
-mv dist/* .
+cp -r dist/* .
 
 # Create the .nojekyll file to disable Jekyll processing
 touch .nojekyll
