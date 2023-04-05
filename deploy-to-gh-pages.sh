@@ -8,24 +8,20 @@ if [ "$answer" = "${answer#[Yy]}" ]; then
     exit 0
 fi
 
-if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]; then
-  # If not, create the gh-pages branch if it doesn't exist.
-  if ! git show-ref --verify --quiet refs/heads/gh-pages; then
-    if ! git branch gh-pages; then
-      echo "Failed to create gh-pages branch"
-      exit 1
-    fi
-  fi
+current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-  # Checkout the gh-pages branch.
-  if ! git checkout gh-pages; then
-    echo "Failed to checkout gh-pages branch"
+if [ "$current_branch" != "gh-pages" ]; then
+    echo "You are not on the gh-pages branch. Please switch to the gh-pages branch before deploying."
     exit 1
-  fi
+else
+    echo "You are on the gh-pages branch. Proceeding with the deployment..."
 fi
 
-# Set the TRUNK_CONFIG environment variable to use the release configuration
-export TRUNK_CONFIG=trunk-release.toml
+# Rest of the script
+
+
+# Set the TRUNK_CONFIG environment variable to use the gh-pages configuration
+export TRUNK_CONFIG=trunk-gh-pages.toml
 
 # Build the Yew application using trunk with the release configuration
 trunk build --release
@@ -34,5 +30,8 @@ trunk build --release
 git add .
 git commit -m "Deploy to gh-pages"
 git push origin gh-pages
+echo "Removing docs folder"
+rm -r docs
+echo "Finsihed removing docs folder"
 
 echo "Finished deploying to gh-pages"
