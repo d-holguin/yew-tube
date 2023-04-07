@@ -34,6 +34,11 @@ fi
 # Set the TRUNK_CONFIG environment variable to use the gh-pages configuration
 export TRUNK_CONFIG=$config_file
 
+# Build the Tailwind CSS file
+export NODE_ENV=production
+
+tailwindcss -c ./tailwind.config.js -o ./tailwind.css --minify
+
 # Build the Yew application using trunk with the release configuration
 trunk build --release
 

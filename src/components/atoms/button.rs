@@ -1,5 +1,3 @@
-
-
 use gloo::console::log;
 use stylist::{style, yew::styled_component};
 use yew::prelude::*;
@@ -9,7 +7,7 @@ pub struct Props {
     pub name: String,
 }
 
-#[styled_component(Button)]
+#[function_component(Button)]
 pub fn button(props: &Props) -> Html {
     html! {
          <button type="button">{props.name.clone()}</button>

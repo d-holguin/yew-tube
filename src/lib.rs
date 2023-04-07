@@ -14,20 +14,37 @@ pub fn app() -> Html {
     log!("App initialized");
     let global_stylesheet = css!(
         r#"
-        * {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
         }
-        html, body {
+
+        html {
+            background-color: #191b1c !important;
+            font-size: 16px; /* Base font size */
+        }
+        
+        body {
             margin: 0;
             padding: 0;
             min-height: 100%;
             height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #f0f0f0;
         }
         .container {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+        }
+        .yewtube-icon {
+            width: 3rem; 
+            height: 3rem; 
         }
         "#,
     );

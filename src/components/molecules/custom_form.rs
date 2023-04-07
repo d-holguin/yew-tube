@@ -6,8 +6,8 @@ use crate::components::atoms::{button::Button, text_input::TextInput};
 
 #[styled_component(CustomForm)]
 pub fn custom_form() -> Html {
-    let name_sate = use_state(|| "".to_string());
-    let name_state_clone = name_sate.clone();
+    let name_state = use_state(|| "".to_string());
+    let name_state_clone = name_state.clone();
     let name_changed = Callback::from(move |name: String| {
         name_state_clone.set(name);
     });
@@ -17,7 +17,7 @@ pub fn custom_form() -> Html {
             <TextInput name="url" handle_onchange={name_changed}/>
             <Button name="Convert" />
         </form>
-        <h3>{&*name_sate}</h3>
+        <div>{&*name_state}</div>
         </>
     }
 }

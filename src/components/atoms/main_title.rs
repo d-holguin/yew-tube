@@ -1,3 +1,4 @@
+use stylist::yew::use_style;
 use stylist::{style, yew::styled_component};
 use yew::prelude::*;
 
@@ -20,7 +21,7 @@ impl Color {
         match self {
             Color::Normal => "normal".to_string(),
             Color::Blue => "blue".to_string(),
-            Color::Green => "green".to_string(),
+            Color::Green => "text-limegreen".to_string(),
         }
     }
 }
@@ -29,14 +30,12 @@ impl Color {
 pub fn main_title(props: &Props) -> Html {
     let style = style!(
         r#"
-    .green {
-        color: green;
-    }
-    .blue {
-        color: blue;
-    }
     .normal {
         color: black;
+    }
+    .text-limegreen {
+        color: #32CD32;
+        font-size: 2rem;
     }
    "#
     )
@@ -45,7 +44,8 @@ pub fn main_title(props: &Props) -> Html {
     props.on_load.emit("MainTitle loaded".to_string());
 
     html! {
-    <div class={style}>
+    <div class={style} style="display: flex; flex-direction: row; column-gap: 0.50rem; justify-content: center; align-items: center">
+        <img class="yewtube-icon" src="assets/icons/yewtube.svg" alt="Icon" />
         <div class={&props.color.to_string()}>{ &props.title }</div>
     </div>
     }
