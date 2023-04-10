@@ -1,7 +1,9 @@
 mod components;
 
 use gloo::console::log;
-use stylist::yew::{styled_component, Global};
+use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsCast;
+use web_sys::{MessageEvent, Worker};
 use yew::prelude::*;
 use yew::Html;
 
@@ -9,55 +11,43 @@ use crate::components::atoms::main_title::Color;
 use crate::components::atoms::main_title::MainTitle;
 use crate::components::molecules::custom_form::CustomForm;
 
-#[styled_component(App)]
+#[function_component(App)]
 pub fn app() -> Html {
     log!("App initialized");
-    let global_stylesheet = css!(
-        r#"
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            background-color: #191b1c !important;
-            font-size: 16px; /* Base font size */
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100%;
-            height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            line-height: 1.5;
-            color: #f0f0f0;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .yewtube-icon {
-            width: 3rem; 
-            height: 3rem; 
-        }
-        "#,
-    );
-
     let main_title_load = Callback::from(|message: String| log!(message));
-
     html! {
-        <>
-            <Global css={global_stylesheet.clone()} />
-            <div class="container">
-                <MainTitle  title="YewTube Converter" color={Color::Green} on_load={main_title_load}></MainTitle>
-                <CustomForm/>
-            </div>
-        </>
+        <div class="h-screen flex flex-col justify-center items-center space-y-8">
+            <MainTitle  title="YewTube Converter" color={Color::Blue} on_load={main_title_load}></MainTitle>
+            <CustomForm/>
+            <div class="mt-8"><Table/></div>
+
+        </div>
+    }
+}
+
+#[function_component(Table)]
+pub fn table() -> Html {
+    html! {
+        <table class="max-w-lg w-full">
+            <thead>
+                <tr class="bg-gray-800">
+                    <th class="py-2 px-4">{"File name"}</th>
+                    <th class="py-2 px-4">{"Size"}</th>
+                    <th class="py-2 px-4"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="even:bg-gray-700 odd:bg-gray-600">
+                    <td class="py-2 px-4">{"Cool_video.mp4"}</td>
+                    <td class="py-2 px-4">{"8mb"}</td>
+                    <td class="py-2 px-4">{"Download Button"}</td>
+                </tr>
+                <tr class="even:bg-gray-700 odd:bg-gray-600">
+                    <td class="py-2 px-4">{"Cool_video_2.mp4"}</td>
+                    <td class="py-2 px-4">{"16mb"}</td>
+                    <td class="py-2 px-4">{"Download Button"}</td>
+                </tr>
+            </tbody>
+        </table>
     }
 }

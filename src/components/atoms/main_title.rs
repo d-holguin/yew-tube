@@ -19,33 +19,19 @@ pub enum Color {
 impl Color {
     pub fn to_string(&self) -> String {
         match self {
-            Color::Normal => "normal".to_string(),
-            Color::Blue => "blue".to_string(),
-            Color::Green => "text-limegreen".to_string(),
+            Color::Normal => "text-black".to_string(),
+            Color::Blue => "text-indigo-500 text-5xl font-bold ml-4".to_string(),
+            Color::Green => "text-green text-5xl font-bold ml-4".to_string(),
         }
     }
 }
 
-#[styled_component(MainTitle)]
+#[function_component(MainTitle)]
 pub fn main_title(props: &Props) -> Html {
-    let style = style!(
-        r#"
-    .normal {
-        color: black;
-    }
-    .text-limegreen {
-        color: #32CD32;
-        font-size: 2rem;
-    }
-   "#
-    )
-    .unwrap();
-
     props.on_load.emit("MainTitle loaded".to_string());
-
     html! {
-    <div class={style} style="display: flex; flex-direction: row; column-gap: 0.50rem; justify-content: center; align-items: center">
-        <img class="yewtube-icon" src="assets/icons/yewtube.svg" alt="Icon" />
+    <div class="flex flex-row items-center">
+        <img class="w-16 h-16" src="assets/icons/yewtube.svg" alt="Icon" />
         <div class={&props.color.to_string()}>{ &props.title }</div>
     </div>
     }
